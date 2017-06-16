@@ -7,7 +7,7 @@ var client = new Twitter({
     access_token_secret: 'VDdm8cgpDKUOfj1nam8qqjc32nXgmHDMtvtSGR7bSq0jV'
 });
 
-var params = {screen_name: 'nodejs'};
+var params = {screen_name: 'SwimBikeRun1'};
 client.get('statuses/user_timeline', params, function(error, tweets, response) {
     if (!error) {
         console.log(tweets);
