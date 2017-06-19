@@ -21,7 +21,7 @@
  });
  });*/
 
-console.log("200");
+//console.log("200");
 
 exports.twitterKeys = {
     consumer_key: 'v3dKodtJmJ7Mjwiu8w2Q4r04H',
@@ -37,6 +37,8 @@ exports.spotifyKeys = {
 
 
 };
+
+console.log(exports.spotifyKeys)
 
 /*
  var Twitter = require('twitter');
