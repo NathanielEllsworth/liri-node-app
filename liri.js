@@ -9,12 +9,6 @@ var User = process.argv[2];
 
 var Text = process.argv[3];
 
-//asynchronously reads the entire contents of a file. Example:
-
-/*fs.readFile('keys.js', (err, data) => {
- if (err) throw err;
- console.log(data);
- });*/
 
 
 switch (User) {   // classwork 5.4 #15 bank.js
@@ -31,7 +25,10 @@ switch (User) {   // classwork 5.4 #15 bank.js
     case 'movie':
         getMovie();
         break;
+        
 }
+
+
 
 function getTweets() {
 
@@ -43,7 +40,6 @@ function getTweets() {
         consumer_secret: twitter.consumer_secret,
         access_token_key: twitter.access_token_key,
         access_token_secret: twitter.access_token_secret
-
 
     });
 
@@ -60,9 +56,14 @@ function getTweets() {
 
             console.log("time tweeted ------------ ", tweets[i].created_at);
             console.log("");
+
         }
+
     });
+
 }
+
+
 
 
 function getSpotify() {
@@ -109,6 +110,8 @@ function getSpotify() {
 }
 
 
+
+
 function getText() {
 
     // Read the random.txt file
@@ -130,108 +133,10 @@ function getText() {
 
     });
 
-
-
 }
 
 
-/*function getSpotify() {
 
- var Spotify = require('node-spotify-api');      //https://www.npmjs.com/package/node-spotify-api
-
- var client = new Spotify({
- id: spotify.client_id,
- secret: spotify.client_secret,
-
-
- });
-
- client.search({type: 'track', query: Text, limit: 1}, (error, data) => {   //api site
- if (error) {
- return console.log('error occured: ' + error);
- }
-
- //console.log(data);
-
- var songPicked = data.tracks.items[0];
-
- console.log(songPicked.album.artists[0].name);
-
- console.log(songPicked.name);
-
- console.log(songPicked.album.name);
-
- console.log(songPicked.preview_url);
- })
-
-
- }*/
-
-
-
-
-
-
-
-
-// function getText() {
-//     fs.readFile("random.txt", "utf8", (error, data) => {    //Classwork 5.4 #13
-//         if (error) throw error;
-//
-//
-//
-//
-//
-//         var i = textArray.indexOf(0);
-//         if (i != -1) {
-//             textArray.splice(i, 0);
-//         }
-//
-//
-//         console.log(textArray);
-//
-//
-//         if (textArray[0] === User) {
-//
-//             User = textArray[0];
-//
-//             Text = textArray[1];
-//
-//             getSpotify();
-//
-//         }
-//
-//
-//         if (textArray[0] === User) {
-//
-//             User = textArray[0];
-//
-//         }
-//
-//
-//     });
-
-// }
-
-//if options is a string, then it specifies the encoding. Example:
-// fs.readFile(file[,options],callback)
-
-/*fs.readFile('keys.js', 'utf8', callback); //callback is (err, data)
-
- //just twitter
-
- console.log("-------------------------");
-
- console.log("Just Twitter keys");
- console.log('twitter', theKeys.Twitter);
- console.log('twitter', theKeys.consumer_key);
- console.log('twitter', theKeys.consumer_secret);
- console.log('twitter', theKeys.access_token_key);
- console.log('twitter', theKeys.access_token_secret);
-
- console.log("-------------------------");
-
- */
 
 function getMovie() {
 
