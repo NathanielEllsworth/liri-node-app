@@ -77,7 +77,7 @@ function getSpotify() {
 
 
     // Spotify search query
-    spotifyClient.search({type: 'track', query: "Forbidden Fruit", limit: 1}, (err, data) => {
+    spotifyClient.search({type: 'track', query: Text, limit: 1}, (err, data) => {
 
         if (err) {
             return console.log('Error occurred: ' + err);
@@ -112,18 +112,25 @@ function getSpotify() {
 function getText() {
 
     // Read the random.txt file
-    fs.readFile("random.txt", "utf8", function (err, data) {
+    fs.readFile("random.txt", "utf8", (err, data) => {
 
         // log error
         if (err) {
-            return console.log(err);
+            return console.log("Error", err);
         }
 
+        var textArray = data.split(",");
 
+        User = textArray[0];
+
+        Text = textArray[1];
+        console.log(Text);
 
         getSpotify();
 
     });
+
+
 
 }
 
@@ -161,44 +168,50 @@ function getText() {
  }*/
 
 
-function getText() {
-    fs.readFile("random.txt", "utf8", (error, data) => {    //Classwork 5.4 #13
-        if (error) throw error;
 
 
-        var textArray = data.split(",");
 
 
-        var i = textArray.indexOf(0);
-        if (i != -1) {
-            textArray.splice(i, 0);
-        }
 
 
-        console.log(textArray);
+// function getText() {
+//     fs.readFile("random.txt", "utf8", (error, data) => {    //Classwork 5.4 #13
+//         if (error) throw error;
+//
+//
+//
+//
+//
+//         var i = textArray.indexOf(0);
+//         if (i != -1) {
+//             textArray.splice(i, 0);
+//         }
+//
+//
+//         console.log(textArray);
+//
+//
+//         if (textArray[0] === User) {
+//
+//             User = textArray[0];
+//
+//             Text = textArray[1];
+//
+//             getSpotify();
+//
+//         }
+//
+//
+//         if (textArray[0] === User) {
+//
+//             User = textArray[0];
+//
+//         }
+//
+//
+//     });
 
-
-        if (textArray[0] === User) {
-
-            User = textArray[0];
-
-            Text = textArray[1];
-
-            getSpotify();
-
-        }
-
-
-        if (textArray[0] === User) {
-
-            User = textArray[0];
-
-        }
-
-
-    });
-
-}
+// }
 
 //if options is a string, then it specifies the encoding. Example:
 // fs.readFile(file[,options],callback)
@@ -222,41 +235,41 @@ function getText() {
 
 function getMovie() {
 
-    // name of movie is set to text
-    var nameOfMovie = Text;
+ // name of movie is set to text
+ var nameOfMovie = Text;
 
-    // OMDB queryURL
-    var queryUrl = "http://www.omdbapi.com/?t=" + nameOfMovie + "&y=&plot=short&apikey=40e9cece";
+ // OMDB queryURL
+ var queryUrl = "http://www.omdbapi.com/?t=" + nameOfMovie + "&y=&plot=short&apikey=40e9cece";
 
-    //console.log(queryUrl);
+ //console.log(queryUrl);
 
-    // Request package function
-    request(queryUrl, (error, response, body) => {
+ // Request package function
+ request(queryUrl, (error, response, body) => {
 
-        //log error
-        if (error) {
-            return console.log(error);
-        }
-
-
-        var movie = JSON.parse(body);
-
-        console.log('----------------------------------------------------------');
-        // movie info
-        console.log("Title: ", movie.Title);
-        console.log("Release Year: ", movie.Year);
-        console.log("Rating: ", movie.imdbRating);
-        console.log("Country: ", movie.Country);
-        console.log("Language: ", movie.Language);
-        console.log("Plot: ", movie.Plot);
-        console.log("Actors: ", movie.Actors);
-
-        console.log('----------------------------------------------------------');
+ //log error
+ if (error) {
+ return console.log(error);
+ }
 
 
-    })
+ var movie = JSON.parse(body);
 
-}
+ console.log('----------------------------------------------------------');
+ // movie info
+ console.log("Title: ", movie.Title);
+ console.log("Release Year: ", movie.Year);
+ console.log("Rating: ", movie.imdbRating);
+ console.log("Country: ", movie.Country);
+ console.log("Language: ", movie.Language);
+ console.log("Plot: ", movie.Plot);
+ console.log("Actors: ", movie.Actors);
+
+ console.log('----------------------------------------------------------');
+
+
+ })
+
+ }
 
 
 /*
